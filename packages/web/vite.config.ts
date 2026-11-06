@@ -108,6 +108,7 @@ const serverOptions = {
 }
 
 export default defineConfig(({ command }) => ({
+  base: process.env.VITE_BASE_PATH ?? "/",
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     "window.__JOIN_URL__":

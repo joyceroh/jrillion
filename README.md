@@ -57,6 +57,10 @@ Open http://localhost:3000 to play and http://localhost:3000/manager to host a g
 
 Your quizzes and results are stored in `./config`, created on first run with an example quiz. Edit them from your host, they persist across updates.
 
+### GitHub Pages (static frontend only)
+
+The GitHub Pages workflow publishes the frontend at `https://<owner>.github.io/<repository>/`. Pages cannot run Razzia's API or Socket.IO server, so games, manager features, and persistent quiz/result storage are unavailable there. Use Docker or another server host to run the complete app.
+
 <details>
 <summary>Without Compose</summary>
 

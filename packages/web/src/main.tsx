@@ -9,7 +9,11 @@ import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 
-const router = createRouter({ routeTree, context: { socket: socketClient } })
+const router = createRouter({
+  routeTree,
+  basepath: import.meta.env.BASE_URL.replace(/\/$/u, "") || "/",
+  context: { socket: socketClient },
+})
 
 declare module "@tanstack/react-router" {
   interface Register {
