@@ -72,7 +72,8 @@
   "questionType": {
     "single": "Scelta singola",
     "multi": "Scelta multipla",
-    "estimation": "Stima"
+    "estimation": "Stima",
+    "text": "Testo"
   },
   "quizzSaved": "Quiz salvato con successo",
   "quizzUpdated": "Quiz aggiornato con successo",

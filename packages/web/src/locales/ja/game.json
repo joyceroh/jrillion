@@ -57,6 +57,9 @@
   "usernamePlaceholder": "ユーザー名を入力",
   "waitingForAnswers": "プレイヤーの回答を待っています",
   "waitingForPlayers": "プレイヤーを待っています",
+  "textAnswerPlaceholder": "回答を入力...",
+  "textAnswerCharacters": "{{count}} / 200",
+  "textResponsesCount": "{{count}} 件の回答",
   "wrong": "残念！",
   "estimation": {
     "yourAnswer": "あなたの回答",

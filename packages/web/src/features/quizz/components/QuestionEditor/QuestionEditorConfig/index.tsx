@@ -1,4 +1,4 @@
-import { QUIZZ_MODES } from "@razzia/common/constants"
+import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
 import type { QuestionType } from "@razzia/common/types/game"
 import {
   Select,
@@ -34,6 +34,10 @@ const QuestionEditorConfig = () => {
     updateQuestion(currentIndex, {
       type: nextType,
       options: defaultOptions,
+      textAnswers:
+        nextType === QUESTION_TYPES.TEXT
+          ? currentQuestion.textAnswers
+          : undefined,
       ...initialValues(currentQuestion),
     })
   }

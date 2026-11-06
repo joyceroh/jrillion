@@ -72,7 +72,8 @@
   "questionType": {
     "single": "Chọn một đáp án",
     "multi": "Chọn nhiều đáp án",
-    "estimation": "Ước lượng"
+    "estimation": "Ước lượng",
+    "text": "Văn bản"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",

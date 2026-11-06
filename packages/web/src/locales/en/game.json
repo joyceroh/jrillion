@@ -60,6 +60,9 @@
   "usernamePlaceholder": "Username here",
   "waitingForAnswers": "Waiting for the players to answer",
   "waitingForPlayers": "Waiting for players",
+  "textAnswerPlaceholder": "Type your answer...",
+  "textAnswerCharacters": "{{count}} / 200",
+  "textResponsesCount": "{{count}} responses",
   "wrong": "Too bad",
   "estimation": {
     "yourAnswer": "Your answer",

@@ -9,6 +9,7 @@ import {
 import { QUESTION_REFINEMENTS } from "@razzia/common/validators/questions"
 import { multiOptionsValidator } from "@razzia/common/validators/questions/choice"
 import { estimationOptionsValidator } from "@razzia/common/validators/questions/estimation"
+import { textAnswersValidator } from "@razzia/common/validators/questions/text"
 import { z } from "zod"
 
 export const questionMediaValidator = z.object({
@@ -37,6 +38,7 @@ const questionSchema = z.object({
   note: z.string().optional(),
   media: questionMediaValidator.optional(),
   answers: z.array(z.string().min(1, "errors:quizz.answerEmpty")),
+  textAnswers: textAnswersValidator.optional(),
   solutions: z.array(z.number()).optional(),
   cooldown: z
     .number()
@@ -73,7 +75,10 @@ export const quizzValidator = z
     }
 
     quizz.questions.forEach((question, index) => {
-      if (question.solutions && question.solutions.length > 0) {
+      if (
+        question.type === QUESTION_TYPES.TEXT ||
+        (question.solutions && question.solutions.length > 0)
+      ) {
         return
       }
 
@@ -116,7 +121,8 @@ export const normalizeLegacyQuizz = (data: unknown): unknown => {
             ? question.solutions
             : [question.solutions],
         ...(isRecord(question.options) &&
-        question.type !== QUESTION_TYPES.ESTIMATION
+        question.type !== QUESTION_TYPES.ESTIMATION &&
+        question.type !== QUESTION_TYPES.TEXT
           ? {
               options: {
                 scoringMode: SCORING_MODES.BALANCED,

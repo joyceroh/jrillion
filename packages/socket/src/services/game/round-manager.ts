@@ -2,13 +2,16 @@
 import {
   EVENTS,
   MAX_POINTS,
+  MAX_TEXT_ANSWER_LENGTH,
   MEDIA_TYPES,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type {
   Answer,
+  AnswerValue,
   GameResult,
   GameSettings,
   GameUpdateQuestion,
@@ -96,7 +99,9 @@ export class RoundManager {
       {
         name: "leaderboard",
         gameModes: [QUIZZ_MODES.QUIZ],
-        skip: () => this.isLastQuestion() || this.isSameCategoryNext(),
+        skip: () =>
+          this.isLastQuestion() ||
+          this.isSameCategoryNext(),
         enter: () => {
           this.showLeaderboard()
         },
@@ -342,7 +347,10 @@ export class RoundManager {
   private recordHistory(players: Player[], scored: ScoredPlayer[] = []): void {
     this.questionsHistory.push({
       ...this.question,
-      solutions: this.isSurvey() ? undefined : this.question.solutions,
+      solutions:
+        this.isSurvey() || this.question.type === QUESTION_TYPES.TEXT
+          ? undefined
+          : this.question.solutions,
       playerAnswers: players.map((player) => {
         const score = scored.find((s) => s.id === player.id)
 
@@ -415,6 +423,11 @@ export class RoundManager {
     this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
       ...this.question,
       responses: answerCounts,
+      ...(this.question.type === QUESTION_TYPES.TEXT && {
+        textResponses: this.playersAnswers.flatMap((answer) =>
+          typeof answer.answerIds === "string" ? [answer.answerIds] : [],
+        ),
+      }),
     })
 
     this.recordHistory(currentPlayers, sortedPlayers)
@@ -498,7 +511,24 @@ export class RoundManager {
 
   // ── Player actions ───────────────────────────────────────────────────────
 
-  private normalizeAnswer(answerIds: number[]): number[] | null {
+  private normalizeAnswer(answerIds: AnswerValue): AnswerValue | null {
+    if (this.question.type === QUESTION_TYPES.TEXT) {
+      if (
+        typeof answerIds !== "string" ||
+        answerIds.length > MAX_TEXT_ANSWER_LENGTH
+      ) {
+        return null
+      }
+
+      const answer = answerIds.trim()
+
+      return answer || null
+    }
+
+    if (!Array.isArray(answerIds)) {
+      return null
+    }
+
     const { options } = this.question
 
     if (!isEstimationOptions(options)) {
@@ -518,7 +548,7 @@ export class RoundManager {
     return [Math.min(options.max, Math.max(options.min, value))]
   }
 
-  selectAnswer(socket: Socket, answerIds: number[]): void {
+  selectAnswer(socket: Socket, answerIds: AnswerValue): void {
     const player = this.opts.players.findById(socket.id)
 
     if (!player || !this.acceptingAnswers) {
@@ -536,6 +566,10 @@ export class RoundManager {
     }
 
     const points = (() => {
+      if (this.question.type === QUESTION_TYPES.TEXT) {
+        return 0
+      }
+
       if (isEstimationOptions(this.question.options)) {
         return this.question.maxPoints ?? MAX_POINTS
       }

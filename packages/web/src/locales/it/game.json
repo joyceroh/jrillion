@@ -58,6 +58,9 @@
   "usernamePlaceholder": "Nome utente qui",
   "waitingForAnswers": "In attesa delle risposte dei giocatori",
   "waitingForPlayers": "In attesa di giocatori",
+  "textAnswerPlaceholder": "Scrivi la tua risposta...",
+  "textAnswerCharacters": "{{count}} / 200",
+  "textResponsesCount": "{{count}} risposte",
   "wrong": "Peccato",
   "estimation": {
     "yourAnswer": "La tua risposta",

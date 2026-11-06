@@ -72,7 +72,8 @@
   "questionType": {
     "single": "Jednokrotny wybór",
     "multi": "Wielokrotny wybór",
-    "estimation": "Szacowanie"
+    "estimation": "Szacowanie",
+    "text": "Tekst"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",

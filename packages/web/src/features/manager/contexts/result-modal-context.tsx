@@ -52,7 +52,10 @@ export const ResultModalProvider = ({ children, result, onClose }: Props) => {
     1,
     ...questionResult.answers.map(
       (_, ai) =>
-        questionResult.playerAnswers.filter((pa) => pa.answerIds?.includes(ai))
+        questionResult.playerAnswers.filter(
+          (pa) =>
+            Array.isArray(pa.answerIds) && pa.answerIds.includes(ai),
+        )
           .length,
     ),
   )

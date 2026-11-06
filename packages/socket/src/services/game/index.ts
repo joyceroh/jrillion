@@ -1,5 +1,6 @@
 import { createDefaultGameSettings, EVENTS } from "@razzia/common/constants"
 import type {
+  AnswerValue,
   GameSettings,
   Player,
   Quizz,
@@ -377,7 +378,7 @@ class Game {
     await this.round.start(socket)
   }
 
-  selectAnswer(socket: Socket, answerIds: number[]) {
+  selectAnswer(socket: Socket, answerIds: AnswerValue) {
     this.round.selectAnswer(socket, answerIds)
   }
 

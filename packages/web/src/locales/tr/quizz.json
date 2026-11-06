@@ -72,7 +72,8 @@
   "questionType": {
     "single": "Tek seçenekli",
     "multi": "Çoktan seçmeli",
-    "estimation": "Tahmin"
+    "estimation": "Tahmin",
+    "text": "Metin"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",

@@ -57,6 +57,9 @@
   "usernamePlaceholder": "Kullanıcı adınızı girin",
   "waitingForAnswers": "Oyuncuların cevap vermesi bekleniyor",
   "waitingForPlayers": "Oyuncular bekleniyor",
+  "textAnswerPlaceholder": "Cevabınızı yazın...",
+  "textAnswerCharacters": "{{count}} / 200",
+  "textResponsesCount": "{{count}} yanıt",
   "wrong": "Maalesef yanlış",
   "estimation": {
     "yourAnswer": "Cevabınız",

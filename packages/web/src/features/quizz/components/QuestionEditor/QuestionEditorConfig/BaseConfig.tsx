@@ -1,6 +1,7 @@
 import {
   MAX_POINTS,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isMultiOptions } from "@razzia/common/questions/options"
@@ -57,81 +58,82 @@ const BaseConfig = () => {
 
   return (
     <>
-      {gameMode !== QUIZZ_MODES.SURVEY && (
-        <ConfigSection title={t("quizz:question.config.scoring")}>
-          <ConfigField>
-            <ConfigField.Label
-              icon={<Star className="size-4" />}
-              label={t("quizz:question.config.maxPoints")}
-              unit="pts"
-            />
-            <ConfigNumberInput
-              name="maxPoints"
-              label={t("quizz:question.config.maxPoints")}
-              fallback={MAX_POINTS}
-              min={0}
-            />
-            <ConfigField.Description>
-              {t("quizz:question.config.maxPointsHint")}
-            </ConfigField.Description>
-          </ConfigField>
-
-          <ConfigField>
-            <ConfigField.Label
-              icon={<ArrowBigDownDash className="size-4" />}
-              label={t("quizz:question.config.penalty")}
-              unit={isPenaltyEnabled ? "pts" : undefined}
-              action={
-                <Switch
-                  aria-label={t("quizz:question.config.penalty")}
-                  checked={isPenaltyEnabled}
-                  onCheckedChange={handleTogglePenalty}
-                />
-              }
-            />
-            {isPenaltyEnabled && (
-              <ConfigNumberInput
-                name="penalty"
-                label={t("quizz:question.config.penalty")}
-                fallback={DEFAULT_PENALTY}
-                min={1}
-              />
-            )}
-            <ConfigField.Description>
-              {t("quizz:question.config.penaltyHint")}
-            </ConfigField.Description>
-          </ConfigField>
-
-          {scoringModes && scoringMode && (
+      {gameMode !== QUIZZ_MODES.SURVEY &&
+        currentQuestion.type !== QUESTION_TYPES.TEXT && (
+          <ConfigSection title={t("quizz:question.config.scoring")}>
             <ConfigField>
               <ConfigField.Label
-                icon={<ListChecks className="size-4" />}
-                label={t("quizz:question.config.scoringMode")}
+                icon={<Star className="size-4" />}
+                label={t("quizz:question.config.maxPoints")}
+                unit="pts"
               />
-              <Select
-                value={scoringMode}
-                onValueChange={handleScoringModeChange}
-              >
-                <SelectTrigger
-                  aria-label={t("quizz:question.config.scoringMode")}
-                >
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {scoringOptions?.map((opt) => (
-                    <SelectItem key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <ConfigNumberInput
+                name="maxPoints"
+                label={t("quizz:question.config.maxPoints")}
+                fallback={MAX_POINTS}
+                min={0}
+              />
               <ConfigField.Description>
-                {t(`quizz:question.config.scoringModeHint.${scoringMode}`)}
+                {t("quizz:question.config.maxPointsHint")}
               </ConfigField.Description>
             </ConfigField>
-          )}
-        </ConfigSection>
-      )}
+
+            <ConfigField>
+              <ConfigField.Label
+                icon={<ArrowBigDownDash className="size-4" />}
+                label={t("quizz:question.config.penalty")}
+                unit={isPenaltyEnabled ? "pts" : undefined}
+                action={
+                  <Switch
+                    aria-label={t("quizz:question.config.penalty")}
+                    checked={isPenaltyEnabled}
+                    onCheckedChange={handleTogglePenalty}
+                  />
+                }
+              />
+              {isPenaltyEnabled && (
+                <ConfigNumberInput
+                  name="penalty"
+                  label={t("quizz:question.config.penalty")}
+                  fallback={DEFAULT_PENALTY}
+                  min={1}
+                />
+              )}
+              <ConfigField.Description>
+                {t("quizz:question.config.penaltyHint")}
+              </ConfigField.Description>
+            </ConfigField>
+
+            {scoringModes && scoringMode && (
+              <ConfigField>
+                <ConfigField.Label
+                  icon={<ListChecks className="size-4" />}
+                  label={t("quizz:question.config.scoringMode")}
+                />
+                <Select
+                  value={scoringMode}
+                  onValueChange={handleScoringModeChange}
+                >
+                  <SelectTrigger
+                    aria-label={t("quizz:question.config.scoringMode")}
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {scoringOptions?.map((opt) => (
+                      <SelectItem key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <ConfigField.Description>
+                  {t(`quizz:question.config.scoringModeHint.${scoringMode}`)}
+                </ConfigField.Description>
+              </ConfigField>
+            )}
+          </ConfigSection>
+        )}
 
       <ConfigSection title={t("quizz:question.config.timings")}>
         <ConfigField>

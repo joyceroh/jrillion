@@ -1,4 +1,4 @@
-import { QUIZZ_MODES } from "@razzia/common/constants"
+import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type { PlayerAnswerRecord } from "@razzia/common/types/game"
 import {
@@ -30,12 +30,17 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
     <tr>
       <td className="px-5 py-2.5 font-medium">{playerName}</td>
       <td className="px-4 py-2.5">
-        {hasAnswer && isEstimation && (
+        {hasAnswer && typeof answerIds === "string" && (
+          <span className="bg-accent text-accent-foreground inline-flex max-w-full break-all rounded-md px-2 py-1 text-xs">
+            {answerIds}
+          </span>
+        )}
+        {hasAnswer && Array.isArray(answerIds) && isEstimation && (
           <span className="bg-accent text-accent-foreground inline-flex rounded-md px-2 py-1 text-xs font-bold">
             {formatValue(answerIds[0])}
           </span>
         )}
-        {hasAnswer && !isEstimation && (
+        {hasAnswer && Array.isArray(answerIds) && !isEstimation && (
           <div className="flex flex-wrap gap-1">
             {answerIds.map((id) => (
               <span
@@ -55,21 +60,22 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
         )}
         {!hasAnswer && <span className="text-muted-foreground text-xs">-</span>}
       </td>
-      {result.gameMode !== QUIZZ_MODES.SURVEY && (
-        <td className="px-4 py-2.5">
-          {isCorrect ? (
-            <span className="text-correct flex items-center gap-1">
-              <Check className="size-4 stroke-4" />
-              {t("manager:result.table.correct")}
-            </span>
-          ) : (
-            <span className="flex items-center gap-1 text-red-500">
-              <X className="size-4 stroke-4" />
-              {t("manager:result.table.incorrect")}
-            </span>
-          )}
-        </td>
-      )}
+      {result.gameMode !== QUIZZ_MODES.SURVEY &&
+        questionResult.type !== QUESTION_TYPES.TEXT && (
+          <td className="px-4 py-2.5">
+            {isCorrect ? (
+              <span className="text-correct flex items-center gap-1">
+                <Check className="size-4 stroke-4" />
+                {t("manager:result.table.correct")}
+              </span>
+            ) : (
+              <span className="flex items-center gap-1 text-red-500">
+                <X className="size-4 stroke-4" />
+                {t("manager:result.table.incorrect")}
+              </span>
+            )}
+          </td>
+        )}
       <td className="text-foreground px-4 py-2.5 text-right font-semibold">
         {points ?? getPlayerPoints(playerName)}
       </td>
@@ -87,11 +93,12 @@ const ResultModalTable = () => {
         <tr className="border-accent bg-muted text-muted-foreground border-b-2 text-left text-xs font-semibold tracking-wide uppercase">
           <th className="px-5 py-2.5">{t("manager:result.table.player")}</th>
           <th className="px-4 py-2.5">{t("manager:result.table.answered")}</th>
-          {result.gameMode !== QUIZZ_MODES.SURVEY && (
-            <th className="px-4 py-2.5">
-              {t("manager:result.table.correctIncorrect")}
-            </th>
-          )}
+          {result.gameMode !== QUIZZ_MODES.SURVEY &&
+            questionResult.type !== QUESTION_TYPES.TEXT && (
+              <th className="px-4 py-2.5">
+                {t("manager:result.table.correctIncorrect")}
+              </th>
+            )}
           <th className="px-4 py-2.5 text-right">
             {t("manager:result.table.points")}
           </th>

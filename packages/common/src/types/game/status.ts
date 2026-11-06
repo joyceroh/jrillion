@@ -65,6 +65,7 @@ interface ManagerExtraStatus {
   SHOW_RESPONSES: {
     question: string
     responses: Record<number, number>
+    textResponses?: string[]
     solutions?: number[]
     answers: string[]
     media?: QuestionMedia

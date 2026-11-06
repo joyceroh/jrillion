@@ -1,0 +1,1178 @@
+{
+  "id": "xg3a1mn6YfIdD4jITUC7h",
+  "gameMode": "quiz",
+  "subject": "Jrillion",
+  "questions": [
+    {
+      "type": "text",
+      "question": "Name a city Joyce has lived in for longer than 2 months",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "san jose",
+          "points": 10
+        },
+        {
+          "text": "sunnyvale",
+          "points": 30
+        },
+        {
+          "text": "Palo Alto",
+          "points": 60
+        },
+        {
+          "text": "University City",
+          "points": 85
+        },
+        {
+          "text": "Sacramento",
+          "points": 100
+        },
+        {
+          "text": "St Louis",
+          "points": 10
+        },
+        {
+          "text": "Santa Clara",
+          "points": 30
+        },
+        {
+          "text": "st. louis",
+          "points": 0
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a university Joyce received an acceptance letter from (acronyms accepted, abbreviate university of ca as uc)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "washu",
+          "points": 10
+        },
+        {
+          "text": "washington university",
+          "points": 10
+        },
+        {
+          "text": "washington university in st louis",
+          "points": 10
+        },
+        {
+          "text": "wustl",
+          "points": 10
+        },
+        {
+          "text": "berkeley",
+          "points": 30
+        },
+        {
+          "text": "cal",
+          "points": 30
+        },
+        {
+          "text": "uc berkeley",
+          "points": 30
+        },
+        {
+          "text": "ucb",
+          "points": 30
+        },
+        {
+          "text": "uc davis",
+          "points": 85
+        },
+        {
+          "text": "ucd",
+          "points": 85
+        },
+        {
+          "text": "uc san diego",
+          "points": 85
+        },
+        {
+          "text": "ucsd",
+          "points": 85
+        },
+        {
+          "text": "university of southern california",
+          "points": 60
+        },
+        {
+          "text": "usc",
+          "points": 60
+        },
+        {
+          "text": "boston university",
+          "points": 100
+        },
+        {
+          "text": "bu",
+          "points": 100
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a musical artist Joyce has seen play live (over 1M listeners on spotify)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "lizzy",
+          "points": 10
+        },
+        {
+          "text": "phoebe",
+          "points": 30
+        },
+        {
+          "text": "5sos",
+          "points": 85
+        },
+        {
+          "text": "5 seconds of summer",
+          "points": 85
+        },
+        {
+          "text": "gracie",
+          "points": 30
+        },
+        {
+          "text": "gdragon",
+          "points": 85
+        },
+        {
+          "text": "gd",
+          "points": 85
+        },
+        {
+          "text": "bts",
+          "points": 30
+        },
+        {
+          "text": "jeremy zucker",
+          "points": 85
+        },
+        {
+          "text": "olivia dean",
+          "points": 60
+        },
+        {
+          "text": "surfaces",
+          "points": 85
+        },
+        {
+          "text": "role model",
+          "points": 85
+        },
+        {
+          "text": "tucker",
+          "points": 85
+        },
+        {
+          "text": "baby rose",
+          "points": 100
+        },
+        {
+          "text": "zedd",
+          "points": 60
+        },
+        {
+          "text": "alex g",
+          "points": 85
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a relative of Joyce that has an english name (first name only, can be by marriage)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "mark",
+          "points": 30
+        },
+        {
+          "text": "rebekah",
+          "points": 10
+        },
+        {
+          "text": "hannah",
+          "points": 10
+        },
+        {
+          "text": "ruth",
+          "points": 10
+        },
+        {
+          "text": "noah",
+          "points": 10
+        },
+        {
+          "text": "joanne",
+          "points": 10
+        },
+        {
+          "text": "daniel",
+          "points": 10
+        },
+        {
+          "text": "nicole",
+          "points": 30
+        },
+        {
+          "text": "eliot",
+          "points": 30
+        },
+        {
+          "text": "kaia",
+          "points": 60
+        },
+        {
+          "text": "eli",
+          "points": 60
+        },
+        {
+          "text": "elias",
+          "points": 60
+        },
+        {
+          "text": "rachel",
+          "points": 85
+        },
+        {
+          "text": "janice",
+          "points": 85
+        },
+        {
+          "text": "christopher",
+          "points": 85
+        },
+        {
+          "text": "john",
+          "points": 30
+        },
+        {
+          "text": "michelle",
+          "points": 85
+        },
+        {
+          "text": "grace",
+          "points": 100
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a person whose location Joyce has access to on Find my friends",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "guenevere",
+          "points": 85
+        },
+        {
+          "text": "elaine",
+          "points": 60
+        },
+        {
+          "text": "ruth",
+          "points": 10
+        },
+        {
+          "text": "hannah",
+          "points": 10
+        },
+        {
+          "text": "rebekah",
+          "points": 10
+        },
+        {
+          "text": "daniel",
+          "points": 10
+        },
+        {
+          "text": "jung",
+          "points": 10
+        },
+        {
+          "text": "lydia",
+          "points": 10
+        },
+        {
+          "text": "cara",
+          "points": 10
+        },
+        {
+          "text": "mom",
+          "points": 10
+        },
+        {
+          "text": "eunyoung",
+          "points": 10
+        },
+        {
+          "text": "angela",
+          "points": 60
+        },
+        {
+          "text": "emily",
+          "points": 85
+        },
+        {
+          "text": "alicia",
+          "points": 30
+        },
+        {
+          "text": "julia",
+          "points": 30
+        },
+        {
+          "text": "rebecca",
+          "points": 30
+        },
+        {
+          "text": "madi",
+          "points": 85
+        },
+        {
+          "text": "malini",
+          "points": 100
+        },
+        {
+          "text": "nicole",
+          "points": 60
+        },
+        {
+          "text": "addie",
+          "points": 60
+        },
+        {
+          "text": "noah",
+          "points": 10
+        },
+        {
+          "text": "joanne",
+          "points": 10
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a college class Joyce took in college",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "korean",
+          "points": 10
+        },
+        {
+          "text": "calc",
+          "points": 10
+        },
+        {
+          "text": "psych",
+          "points": 30
+        },
+        {
+          "text": "cs",
+          "points": 10
+        },
+        {
+          "text": "cse",
+          "points": 10
+        },
+        {
+          "text": "computer science",
+          "points": 10
+        },
+        {
+          "text": "anthro",
+          "points": 85
+        },
+        {
+          "text": "college writing",
+          "points": 10
+        },
+        {
+          "text": "diff eq",
+          "points": 30
+        },
+        {
+          "text": "differential equations",
+          "points": 30
+        },
+        {
+          "text": "algorithm",
+          "points": 30
+        },
+        {
+          "text": "data structure",
+          "points": 30
+        },
+        {
+          "text": "logic",
+          "points": 30
+        },
+        {
+          "text": "discrete",
+          "points": 30
+        },
+        {
+          "text": "mobile",
+          "points": 30
+        },
+        {
+          "text": "video game",
+          "points": 30
+        },
+        {
+          "text": "matrix",
+          "points": 60
+        },
+        {
+          "text": "solar system",
+          "points": 30
+        },
+        {
+          "text": "developmental psych",
+          "points": 85
+        },
+        {
+          "text": "probability",
+          "points": 30
+        },
+        {
+          "text": "parallel",
+          "points": 60
+        },
+        {
+          "text": "concurrent",
+          "points": 60
+        },
+        {
+          "text": "probstats",
+          "points": 60
+        },
+        {
+          "text": "prob stats",
+          "points": 60
+        },
+        {
+          "text": "topology",
+          "points": 85
+        },
+        {
+          "text": "rapid prototype",
+          "points": 85
+        },
+        {
+          "text": "creative programming",
+          "points": 85
+        },
+        {
+          "text": "ai",
+          "points": 60
+        },
+        {
+          "text": "artificial intelligence",
+          "points": 60
+        },
+        {
+          "text": "object oriented",
+          "points": 85
+        },
+        {
+          "text": "natural disasters",
+          "points": 100
+        },
+        {
+          "text": "analysis of algorithms",
+          "points": 60
+        },
+        {
+          "text": "visual principles",
+          "points": 85
+        },
+        {
+          "text": "graph theory",
+          "points": 85
+        },
+        {
+          "text": "tech writing",
+          "points": 85
+        },
+        {
+          "text": "technical writing",
+          "points": 85
+        },
+        {
+          "text": "data science",
+          "points": 60
+        },
+        {
+          "text": "interaction design",
+          "points": 85
+        },
+        {
+          "text": "network data",
+          "points": 85
+        },
+        {
+          "text": "quantum computing",
+          "points": 85
+        },
+        {
+          "text": "linear algebra",
+          "points": 60
+        },
+        {
+          "text": "linear",
+          "points": 60
+        },
+        {
+          "text": "taekwondo",
+          "points": 30
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name an account that Joyce follows on instagram that has more than 10k followers (the handle or the name of the person/organization)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "moonwake",
+          "points": 60
+        },
+        {
+          "text": "world climbing",
+          "points": 30
+        },
+        {
+          "text": "redcurrant",
+          "points": 60
+        },
+        {
+          "text": "audrey leonard",
+          "points": 60
+        },
+        {
+          "text": "arsenal",
+          "points": 30
+        },
+        {
+          "text": "lizzy",
+          "points": 10
+        },
+        {
+          "text": "jeremy",
+          "points": 30
+        },
+        {
+          "text": "washu",
+          "points": 10
+        },
+        {
+          "text": "washington university",
+          "points": 10
+        },
+        {
+          "text": "wustl",
+          "points": 10
+        },
+        {
+          "text": "theladyshortcake",
+          "points": 85
+        },
+        {
+          "text": "sookieandivy",
+          "points": 85
+        },
+        {
+          "text": "iananthonywho",
+          "points": 100
+        },
+        {
+          "text": "ian",
+          "points": 100
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a person Joyce has lived with (at least a year, signed a lease with, or subletters)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "eunyoung",
+          "points": 10
+        },
+        {
+          "text": "mom",
+          "points": 10
+        },
+        {
+          "text": "younseo",
+          "points": 10
+        },
+        {
+          "text": "dad",
+          "points": 10
+        },
+        {
+          "text": "mark",
+          "points": 10
+        },
+        {
+          "text": "rebekah",
+          "points": 10
+        },
+        {
+          "text": "hannah",
+          "points": 10
+        },
+        {
+          "text": "ruth",
+          "points": 10
+        },
+        {
+          "text": "noah",
+          "points": 10
+        },
+        {
+          "text": "joanne",
+          "points": 10
+        },
+        {
+          "text": "daniel",
+          "points": 10
+        },
+        {
+          "text": "jung",
+          "points": 10
+        },
+        {
+          "text": "julia",
+          "points": 30
+        },
+        {
+          "text": "alicia",
+          "points": 30
+        },
+        {
+          "text": "lydia",
+          "points": 10
+        },
+        {
+          "text": "kayli",
+          "points": 10
+        },
+        {
+          "text": "jenna",
+          "points": 60
+        },
+        {
+          "text": "meme",
+          "points": 85
+        },
+        {
+          "text": "sungyi",
+          "points": 60
+        },
+        {
+          "text": "julie",
+          "points": 85
+        },
+        {
+          "text": "julian",
+          "points": 85
+        },
+        {
+          "text": "elsa",
+          "points": 80
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name an app Joyce has downloaded on her phone (excluding offloaded apps and google/apple apps)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "libby",
+          "points": 60
+        },
+        {
+          "text": "airbnb",
+          "points": 30
+        },
+        {
+          "text": "yelp",
+          "points": 30
+        },
+        {
+          "text": "fire tv",
+          "points": 60
+        },
+        {
+          "text": "superfan",
+          "points": 60
+        },
+        {
+          "text": "services",
+          "points": 85
+        },
+        {
+          "text": "whatsapp",
+          "points": 10
+        },
+        {
+          "text": "kindle",
+          "points": 30
+        },
+        {
+          "text": "disney",
+          "points": 30
+        },
+        {
+          "text": "fotmob",
+          "points": 85
+        },
+        {
+          "text": "venmo",
+          "points": 10
+        },
+        {
+          "text": "music stand",
+          "points": 85
+        },
+        {
+          "text": "training",
+          "points": 60
+        },
+        {
+          "text": "prime video",
+          "points": 30
+        },
+        {
+          "text": "paramount",
+          "points": 30
+        },
+        {
+          "text": "facebook",
+          "points": 10
+        },
+        {
+          "text": "chase",
+          "points": 10
+        },
+        {
+          "text": "zoom",
+          "points": 10
+        },
+        {
+          "text": "linkedin",
+          "points": 10
+        },
+        {
+          "text": "southwest",
+          "points": 30
+        },
+        {
+          "text": "myhyundai",
+          "points": 85
+        },
+        {
+          "text": "dashlane",
+          "points": 85
+        },
+        {
+          "text": "marcus",
+          "points": 85
+        },
+        {
+          "text": "xfinity",
+          "points": 60
+        },
+        {
+          "text": "lyft",
+          "points": 10
+        },
+        {
+          "text": "amazon",
+          "points": 10
+        },
+        {
+          "text": "american",
+          "points": 30
+        },
+        {
+          "text": "jetblue",
+          "points": 30
+        },
+        {
+          "text": "doordash",
+          "points": 10
+        },
+        {
+          "text": "fitness",
+          "points": 60
+        },
+        {
+          "text": "chick fil a",
+          "points": 30
+        },
+        {
+          "text": "starbucks",
+          "points": 30
+        },
+        {
+          "text": "panera",
+          "points": 30
+        },
+        {
+          "text": "phliz",
+          "points": 60
+        },
+        {
+          "text": "peacock",
+          "points": 30
+        },
+        {
+          "text": "netflix",
+          "points": 10
+        },
+        {
+          "text": "spotify",
+          "points": 10
+        },
+        {
+          "text": "nyrr",
+          "points": 85
+        },
+        {
+          "text": "uber",
+          "points": 10
+        },
+        {
+          "text": "bose",
+          "points": 85
+        },
+        {
+          "text": "hulu",
+          "points": 30
+        },
+        {
+          "text": "kaya",
+          "points": 60
+        },
+        {
+          "text": "partiful",
+          "points": 60
+        },
+        {
+          "text": "ultimate",
+          "points": 60
+        },
+        {
+          "text": "tabs & chords",
+          "points": 60
+        },
+        {
+          "text": "notion",
+          "points": 30
+        },
+        {
+          "text": "okta",
+          "points": 85
+        },
+        {
+          "text": "outlook",
+          "points": 30
+        },
+        {
+          "text": "pinterest",
+          "points": 30
+        },
+        {
+          "text": "etrade",
+          "points": 60
+        },
+        {
+          "text": "bofa",
+          "points": 30
+        },
+        {
+          "text": "bank of america",
+          "points": 30
+        },
+        {
+          "text": "beli",
+          "points": 30
+        },
+        {
+          "text": "goodreads",
+          "points": 60
+        },
+        {
+          "text": "church center",
+          "points": 85
+        },
+        {
+          "text": "esv",
+          "points": 30
+        },
+        {
+          "text": "bible",
+          "points": 30
+        },
+        {
+          "text": "safeway",
+          "points": 30
+        },
+        {
+          "text": "kp",
+          "points": 60
+        },
+        {
+          "text": "messenger",
+          "points": 10
+        },
+        {
+          "text": "slack",
+          "points": 10
+        },
+        {
+          "text": "waymo",
+          "points": 60
+        },
+        {
+          "text": "chatgpt",
+          "points": 30
+        },
+        {
+          "text": "cinemark",
+          "points": 60
+        },
+        {
+          "text": "ballpark",
+          "points": 85
+        },
+        {
+          "text": "amc",
+          "points": 60
+        },
+        {
+          "text": "strava",
+          "points": 30
+        },
+        {
+          "text": "att",
+          "points": 60
+        },
+        {
+          "text": "sbc",
+          "points": 100
+        },
+        {
+          "text": "stanford blood",
+          "points": 100
+        },
+        {
+          "text": "drawwithbuddies",
+          "points": 85
+        },
+        {
+          "text": "bitwarden",
+          "points": 85
+        },
+        {
+          "text": "costco",
+          "points": 30
+        },
+        {
+          "text": "reddit",
+          "points": 10
+        },
+        {
+          "text": "ryanair",
+          "points": 60
+        },
+        {
+          "text": "appfolio",
+          "points": 85
+        },
+        {
+          "text": "westjet",
+          "points": 60
+        },
+        {
+          "text": "transit",
+          "points": 30
+        },
+        {
+          "text": "irobot",
+          "points": 85
+        },
+        {
+          "text": "clue",
+          "points": 30
+        },
+        {
+          "text": "spothero",
+          "points": 85
+        },
+        {
+          "text": "tiktok",
+          "points": 10
+        },
+        {
+          "text": "charlie",
+          "points": 60
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a non-US city Joyce has visited (layovers do not count)",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "London",
+          "points": 10
+        },
+        {
+          "text": "Reading",
+          "points": 60
+        },
+        {
+          "text": "Oxford",
+          "points": 85
+        },
+        {
+          "text": "Edinburgh",
+          "points": 60
+        },
+        {
+          "text": "Paris",
+          "points": 60
+        },
+        {
+          "text": "Oslo",
+          "points": 30
+        },
+        {
+          "text": "Copenhagen",
+          "points": 30
+        },
+        {
+          "text": "Lisbon",
+          "points": 60
+        },
+        {
+          "text": "Barcelona",
+          "points": 30
+        },
+        {
+          "text": "Florence",
+          "points": 30
+        },
+        {
+          "text": "Rome",
+          "points": 30
+        },
+        {
+          "text": "Seoul",
+          "points": 30
+        },
+        {
+          "text": "sokcho",
+          "points": 85
+        },
+        {
+          "text": "daejeon",
+          "points": 100
+        },
+        {
+          "text": "gyeongju",
+          "points": 85
+        },
+        {
+          "text": "gyungju",
+          "points": 85
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "text",
+      "question": "Name a US state Joyce has spent more than 24 hours in",
+      "answers": [],
+      "textAnswers": [
+        {
+          "text": "california",
+          "points": 10
+        },
+        {
+          "text": "missouri",
+          "points": 10
+        },
+        {
+          "text": "washington",
+          "points": 30
+        },
+        {
+          "text": "oregon",
+          "points": 85
+        },
+        {
+          "text": "nevada",
+          "points": 85
+        },
+        {
+          "text": "texas",
+          "points": 60
+        },
+        {
+          "text": "illinois",
+          "points": 60
+        },
+        {
+          "text": "indiana",
+          "points": 100
+        },
+        {
+          "text": "new york",
+          "points": 30
+        },
+        {
+          "text": "massachusetts",
+          "points": 60
+        }
+      ],
+      "cooldown": 5,
+      "time": 20
+    }
+  ]
+}

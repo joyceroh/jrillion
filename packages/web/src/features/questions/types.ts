@@ -1,10 +1,10 @@
-import type { QuestionOptions } from "@razzia/common/types/game"
+import type { AnswerValue, QuestionOptions } from "@razzia/common/types/game"
 import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
 
 export interface AnswerComponentProps {
   answers: string[]
   options?: QuestionOptions
-  onSubmit: (_answerKeys: number[]) => void
+  onSubmit: (_answer: AnswerValue) => void
   readOnly?: boolean
   fill?: boolean
 }

@@ -72,7 +72,8 @@
   "questionType": {
     "single": "Single choice",
     "multi": "Multiple choice",
-    "estimation": "Estimation"
+    "estimation": "Estimation",
+    "text": "Text"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",

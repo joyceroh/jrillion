@@ -72,7 +72,8 @@
   "questionType": {
     "single": "単一選択",
     "multi": "複数選択",
-    "estimation": "数値推定"
+    "estimation": "数値推定",
+    "text": "テキスト"
   },
   "quizzSaved": "クイズを保存しました",
   "quizzUpdated": "クイズを更新しました",

@@ -93,4 +93,46 @@ describe("scoreQuestion", () => {
 
     expect(player.streak).toBe(0)
   })
+
+  it("accepts a correct text answer contained in the submitted answer", () => {
+    const question = createQuestion({
+      type: "text",
+      answers: [],
+      textAnswers: [{ text: "redcurrant", points: 500 }],
+      solutions: undefined,
+    })
+    const [scored] = scoreQuestion(question, [alice()], [
+      { playerId: "alice", answerIds: "redcurrantbakery", points: 0 },
+    ])
+
+    expect(scored).toMatchObject({ lastCorrect: true, lastPoints: 500 })
+  })
+
+  it("matches text answer substrings without regard to case", () => {
+    const question = createQuestion({
+      type: "text",
+      answers: [],
+      textAnswers: [{ text: "RedCurrant", points: 500 }],
+      solutions: undefined,
+    })
+    const [scored] = scoreQuestion(question, [alice()], [
+      { playerId: "alice", answerIds: "redcurrantbakery", points: 0 },
+    ])
+
+    expect(scored.lastCorrect).toBe(true)
+  })
+
+  it("does not accept a submitted answer that is only a substring of the correct answer", () => {
+    const question = createQuestion({
+      type: "text",
+      answers: [],
+      textAnswers: [{ text: "redcurrant", points: 500 }],
+      solutions: undefined,
+    })
+    const [scored] = scoreQuestion(question, [alice()], [
+      { playerId: "alice", answerIds: "red", points: 0 },
+    ])
+
+    expect(scored.lastCorrect).toBe(false)
+  })
 })

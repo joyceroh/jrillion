@@ -58,6 +58,9 @@
   "usernamePlaceholder": "Nhập tên người dùng",
   "waitingForAnswers": "Đang chờ người chơi trả lời",
   "waitingForPlayers": "Đang chờ người chơi",
+  "textAnswerPlaceholder": "Nhập câu trả lời...",
+  "textAnswerCharacters": "{{count}} / 200",
+  "textResponsesCount": "{{count}} câu trả lời",
   "wrong": "Sai rồi",
   "estimation": {
     "yourAnswer": "Câu trả lời của bạn",

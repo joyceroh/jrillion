@@ -21,7 +21,11 @@ interface Props {
 const Room = ({ data: { text, inviteCode } }: Props) => {
   const { gameId, players, locked } = useManagerStore()
   const { socket } = useSocket()
-  const webUrl = window.location.origin
+  const webUrl =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+      ? window.__JOIN_URL__
+      : window.location.origin
   const [playerList, setPlayerList] =
     useState<Array<Player & { timedOut?: boolean }>>(players)
   const [qrOpen, setQrOpen] = useState(false)

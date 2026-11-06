@@ -1,4 +1,4 @@
-import { QUIZZ_MODES } from "@razzia/common/constants"
+import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
 import { useResultModal } from "@razzia/web/features/manager/contexts/result-modal-context"
 import { Users } from "lucide-react"
 import { useTranslation } from "react-i18next"
@@ -47,12 +47,14 @@ const CorrectAnswersStat = () => {
 }
 
 const ResultModalStats = () => {
-  const { result, answeredCount, totalPlayers } = useResultModal()
+  const { result, questionResult, answeredCount, totalPlayers } =
+    useResultModal()
   const { t } = useTranslation()
 
   return (
     <div className="divide-accent border-accent bg-muted/30 flex shrink-0 divide-x-2 border-b-2">
-      {result.gameMode !== QUIZZ_MODES.SURVEY && <CorrectAnswersStat />}
+      {result.gameMode !== QUIZZ_MODES.SURVEY &&
+        questionResult.type !== QUESTION_TYPES.TEXT && <CorrectAnswersStat />}
 
       <div className="flex flex-1 items-center justify-between px-5 py-3">
         <p className="text-muted-foreground text-xs">

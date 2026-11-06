@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite"
 import { tanstackRouter } from "@tanstack/router-plugin/vite"
 import react from "@vitejs/plugin-react"
 import fs from "node:fs"
+import { networkInterfaces } from "node:os"
 import type { IncomingMessage, ServerResponse } from "node:http"
 import path from "node:path"
 import { fileURLToPath } from "url"
@@ -83,6 +84,14 @@ const configServer = (): Plugin => ({
 
 const webPort = Number(process.env.WEB_PORT) || 3000
 const socketUrl = `http://localhost:${Number(process.env.SOCKET_PORT) || 3001}`
+const lanHost = Object.values(networkInterfaces())
+  .flatMap((addresses) => addresses ?? [])
+  .find(
+    (address) =>
+      address.family === "IPv4" &&
+      !address.internal &&
+      !address.address.startsWith("169.254."),
+  )?.address
 
 const serverOptions = {
   port: webPort,
@@ -98,9 +107,13 @@ const serverOptions = {
   },
 }
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
+    "window.__JOIN_URL__":
+      command === "serve" && lanHost
+        ? JSON.stringify(`http://${lanHost}:${webPort}`)
+        : "window.location.origin",
   },
   plugins: [
     tanstackRouter({
@@ -129,4 +142,4 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 2000,
   },
-})
+}))

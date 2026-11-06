@@ -1,3 +1,4 @@
+import { QUESTION_TYPES } from "@razzia/common/constants"
 import type { Question, QuestionType } from "@razzia/common/types/game"
 import * as estimation from "./estimation"
 import * as multi from "./multi"
@@ -9,4 +10,5 @@ export const QUESTION_SCORING: Record<QuestionType, ScoringFn> = {
   [single.type]: single.scoring,
   [multi.type]: multi.scoring,
   [estimation.type]: estimation.scoring,
+  [QUESTION_TYPES.TEXT]: () => 0,
 }

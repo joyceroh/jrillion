@@ -30,6 +30,11 @@ export interface EstimationQuestionOptions {
 
 export type QuestionOptions = MultiQuestionOptions | EstimationQuestionOptions
 
+export interface TextAnswerOption {
+  text: string
+  points: number
+}
+
 export interface Player {
   id: string
   clientId: string
@@ -39,9 +44,11 @@ export interface Player {
   streak: number
 }
 
+export type AnswerValue = number[] | string
+
 export interface Answer {
   playerId: string
-  answerIds: number[]
+  answerIds: AnswerValue
   points: number
 }
 
@@ -69,6 +76,7 @@ export interface Question {
   note?: string
   media?: QuestionMedia
   answers: string[]
+  textAnswers?: TextAnswerOption[]
   solutions?: number[]
   cooldown: number
   time: number
@@ -109,7 +117,7 @@ export interface GameUpdateQuestion {
 
 export interface PlayerAnswerRecord {
   playerName: string
-  answerIds: number[] | null
+  answerIds: AnswerValue | null
   correct?: boolean
   points?: number
 }

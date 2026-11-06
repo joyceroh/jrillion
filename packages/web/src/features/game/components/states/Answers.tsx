@@ -1,5 +1,8 @@
 import { EVENTS, MEDIA_TYPES, NO_TIME_LIMIT } from "@razzia/common/constants"
-import type { QuestionMediaType } from "@razzia/common/types/game"
+import type {
+  AnswerValue,
+  QuestionMediaType,
+} from "@razzia/common/types/game"
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
 import QuestionMedia from "@razzia/web/components/QuestionMedia"
 import QuestionDialog from "@razzia/web/features/game/components/QuestionDialog"
@@ -60,7 +63,7 @@ const Answers = ({
     loop: true,
   })
 
-  const handleSubmit = (answerKeys: number[]) => {
+  const handleSubmit = (answerKeys: AnswerValue) => {
     if (!player || !gameId) {
       return
     }

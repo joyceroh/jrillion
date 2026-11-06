@@ -71,7 +71,7 @@ const ResultModalAnswers = () => {
   const scoringMode = isMultiOptions(options) ? options.scoringMode : undefined
 
   const values = questionResult.playerAnswers.flatMap(
-    (pa) => pa.answerIds ?? [],
+    (pa) => (Array.isArray(pa.answerIds) ? pa.answerIds : []),
   )
   const average = (() => {
     if (values.length === 0) {
@@ -122,10 +122,31 @@ const ResultModalAnswers = () => {
       return estimationRows()
     }
 
+    if (questionResult.type === QUESTION_TYPES.TEXT) {
+      const responseCounts = new Map<string, number>()
+
+      questionResult.playerAnswers.forEach(({ answerIds }) => {
+        if (typeof answerIds === "string") {
+          responseCounts.set(
+            answerIds,
+            (responseCounts.get(answerIds) ?? 0) + 1,
+          )
+        }
+      })
+
+      return [...responseCounts].map(([label, count]) => ({
+        label,
+        count,
+        isCorrect: false,
+        color: "bg-primary",
+        answerLabel: "T",
+      }))
+    }
+
     return questionResult.answers.map((label, ai) => ({
       label,
       count: questionResult.playerAnswers.filter((pa) =>
-        pa.answerIds?.includes(ai),
+        Array.isArray(pa.answerIds) && pa.answerIds.includes(ai),
       ).length,
       isCorrect: questionResult.solutions?.includes(ai) ?? false,
       color: ANSWERS_COLORS[ai % 4],
@@ -210,7 +231,8 @@ const ResultModalAnswers = () => {
                 {row.label}
               </span>
 
-              {result.gameMode !== QUIZZ_MODES.SURVEY && (
+              {result.gameMode !== QUIZZ_MODES.SURVEY &&
+                questionResult.type !== QUESTION_TYPES.TEXT && (
                 <div className="shrink-0">
                   {row.isCorrect ? (
                     <Check className="text-correct size-5 stroke-4" />
