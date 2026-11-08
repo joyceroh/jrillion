@@ -1,24 +1,3 @@
-<p align="center">
-  <img width="450" height="120" align="center" src=".github/logo.svg">
-  <br>
-  <div align="center">
-    <img alt="Visitor Badge" src="https://api.visitorbadge.io/api/visitors?path=https://github.com/Ralex91/Razzia/edit/main/README.md&countColor=%23FF9900">
-    <img src="https://img.shields.io/docker/pulls/ralex91/razzia?style=for-the-badge&color=FF9900" alt="Docker Pulls">
-  </div>
-</p>
-
-## 🧩 What is this project?
-
-Razzia is a straightforward and open-source quiz platform, allowing users to host it on their own server for smaller events.
-
-> **Disclaimer**: Razzia is an independent, open-source software project. It is not affiliated with, endorsed by, or sponsored by any third-party quiz platform or service. Any resemblance to other quiz platforms is purely incidental.
-
-<p align="center">
-  <img width="30%" src=".github/previews/1.png" alt="Login">
-  <img width="30%" src=".github/previews/2.png" alt="Manager Room">
-  <img width="30%" src=".github/previews/3.png" alt="Question Screen">
-</p>
-
 ## 📖 Getting Started
 
 ### 🐳 Using Docker (Recommended)
@@ -57,10 +36,6 @@ Open http://localhost:3000 to play and http://localhost:3000/manager to host a g
 
 Your quizzes and results are stored in `./config`, created on first run with an example quiz. Edit them from your host, they persist across updates.
 
-### GitHub Pages (static frontend only)
-
-The GitHub Pages workflow publishes the frontend at `https://<owner>.github.io/<repository>/`. Pages cannot run Razzia's API or Socket.IO server, so games, manager features, and persistent quiz/result storage are unavailable there. Use Docker or another server host to run the complete app.
-
 <details>
 <summary>Without Compose</summary>
 
@@ -81,8 +56,8 @@ Requires Node.js 24 and [pnpm](https://pnpm.io/) 10.16+.
 1. Clone and install:
 
 ```bash
-git clone https://github.com/Ralex91/Razzia.git
-cd Razzia
+git clone https://github.com/joyceroh/jrillion.git
+cd jrillion
 pnpm install
 ```
 
@@ -100,8 +75,6 @@ pnpm start
 ```
 
 Open http://localhost:3000 to play and http://localhost:3000/manager to host a game.
-
-> Want to work on the code? See [CONTRIBUTING.md](.github/CONTRIBUTING.md) to run it in development mode.
 
 ## 📚 Documentation
 
@@ -121,13 +94,3 @@ Full index in [docs/](docs/README.md).
 3. Share the game URL (http://localhost:3000) and room code with participants
 4. Wait for players to join
 5. Click the start button to begin the game
-
-## 📝 Contributing
-
-Contributions are welcome! Please read the [CONTRIBUTING.md](.github/CONTRIBUTING.md) guide before submitting a pull request.
-
-For bug reports or feature requests, please [create an issue](https://github.com/Ralex91/Razzia/issues).
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Ralex91/Razzia&type=date&logscale=&legend=bottom-right)](https://www.star-history.com/#Ralex91/Razzia&type=date&logscale=&legend=bottom-right)
