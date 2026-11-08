@@ -5,6 +5,7 @@ import type {
   QuizzMode,
   QuizzWithId,
 } from "@razzia/common/types/game"
+import type { UpdateResultPoints } from "@razzia/common/validators/results"
 import {
   normalizeLegacyQuizz,
   quizzValidator,
@@ -259,6 +260,74 @@ export const getResultById = (id: string): GameResult => {
   const result = data as unknown as StoredResult
 
   return { ...result, gameMode: result.gameMode ?? QUIZZ_MODES.QUIZ }
+}
+
+export const updateResultPoints = (
+  id: string,
+  { questionIndex, playerAnswerIndex, points }: UpdateResultPoints,
+): GameResult => {
+  const file = requireFileById("results", id, "errors:result.notFound")
+  const result = getResultById(id)
+
+  if (
+    result.gameMode === QUIZZ_MODES.SURVEY ||
+    questionIndex < 0 ||
+    questionIndex >= result.questions.length
+  ) {
+    throw invalidInput("errors:invalidRequest")
+  }
+
+  const question = result.questions[questionIndex]
+
+  if (
+    playerAnswerIndex < 0 ||
+    playerAnswerIndex >= question.playerAnswers.length
+  ) {
+    throw invalidInput("errors:invalidRequest")
+  }
+
+  const playerAnswer = question.playerAnswers[playerAnswerIndex]
+  const player = result.players.find(
+    ({ username }) => username === playerAnswer.playerName,
+  )
+
+  if (!player) {
+    throw invalidInput("errors:invalidRequest")
+  }
+
+  const previousPoints = playerAnswer.points ?? 0
+  playerAnswer.points = points
+
+  const hasCompletePointHistory = result.questions.every((questionResult) =>
+    questionResult.playerAnswers.some(
+      (answer) =>
+        answer.playerName === player.username &&
+        typeof answer.points === "number",
+    ),
+  )
+
+  if (hasCompletePointHistory) {
+    player.points = result.questions.reduce((total, questionResult) => {
+      const answer = questionResult.playerAnswers.find(
+        ({ playerName }) => playerName === player.username,
+      )
+
+      return Math.max(0, total + (answer?.points ?? 0))
+    }, 0)
+  } else {
+    player.points = Math.max(0, player.points + points - previousPoints)
+  }
+
+  result.players = [...result.players]
+    .sort((a, b) => b.points - a.points)
+    .map((resultPlayer, index) => ({ ...resultPlayer, rank: index + 1 }))
+
+  fs.writeFileSync(
+    join(getPath("results"), file),
+    JSON.stringify(result, null, 2),
+  )
+
+  return result
 }
 
 export const deleteResult = (id: string): void => {

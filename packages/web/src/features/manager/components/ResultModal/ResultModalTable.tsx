@@ -1,37 +1,80 @@
 import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type { PlayerAnswerRecord } from "@razzia/common/types/game"
+import Input from "@razzia/web/components/Input"
 import {
   ANSWERS_COLORS,
   ANSWERS_LABELS,
 } from "@razzia/web/features/game/utils/constants"
 import { useResultModal } from "@razzia/web/features/manager/contexts/result-modal-context"
+import {
+  resultKeys,
+  updateResultPoints,
+} from "@razzia/web/features/manager/queries"
 import { formatValue } from "@razzia/web/features/questions/estimation/utils"
 import { isAnswerCorrect } from "@razzia/web/features/questions/utils"
+import { ApiError } from "@razzia/web/lib/api"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import clsx from "clsx"
-import { Check, X } from "lucide-react"
+import { Check, Pencil, Save, X } from "lucide-react"
+import { useState, type SubmitEvent } from "react"
+import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
 
 interface RowProps {
   playerAnswer: PlayerAnswerRecord
+  answerIndex: number
+  canEditPoints: boolean
+  isSaving: boolean
+  onSavePoints: (
+    answerIndex: number,
+    points: number,
+    onSuccess: () => void,
+  ) => void
 }
 
-const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
+const ResultModalTableRow = ({
+  playerAnswer,
+  answerIndex,
+  canEditPoints,
+  isSaving,
+  onSavePoints,
+}: RowProps) => {
   const { result, questionResult, getPlayerPoints } = useResultModal()
   const { t } = useTranslation()
+  const [isEditingPoints, setIsEditingPoints] = useState(false)
+  const [pointsValue, setPointsValue] = useState(
+    String(playerAnswer.points ?? 0),
+  )
 
   const { playerName, answerIds, correct, points } = playerAnswer
   const hasAnswer = answerIds !== null && answerIds.length > 0
+  const awardedPoints =
+    points ??
+    (result.gameMode === QUIZZ_MODES.SURVEY ? getPlayerPoints(playerName) : 0)
 
   const isCorrect = correct ?? isAnswerCorrect(questionResult, answerIds)
   const isEstimation = isEstimationOptions(questionResult.options)
+  const parsedPoints = Number(pointsValue)
+  const canSavePoints =
+    pointsValue.trim() !== "" && Number.isSafeInteger(parsedPoints)
+
+  const handleSavePoints = (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (!canSavePoints) {
+      return
+    }
+
+    onSavePoints(answerIndex, parsedPoints, () => setIsEditingPoints(false))
+  }
 
   return (
     <tr>
       <td className="px-5 py-2.5 font-medium">{playerName}</td>
       <td className="px-4 py-2.5">
         {hasAnswer && typeof answerIds === "string" && (
-          <span className="bg-accent text-accent-foreground inline-flex max-w-full break-all rounded-md px-2 py-1 text-xs">
+          <span className="bg-accent text-accent-foreground inline-flex max-w-full rounded-md px-2 py-1 text-xs break-all">
             {answerIds}
           </span>
         )}
@@ -77,15 +120,86 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
           </td>
         )}
       <td className="text-foreground px-4 py-2.5 text-right font-semibold">
-        {points ?? getPlayerPoints(playerName)}
+        {isEditingPoints ? (
+          <form
+            className="inline-flex items-center justify-end gap-1"
+            onSubmit={handleSavePoints}
+          >
+            <Input
+              autoFocus
+              aria-label={t("manager:result.table.points")}
+              className="w-20 px-2 py-1 text-right text-sm"
+              type="number"
+              step={1}
+              value={pointsValue}
+              onChange={(event) => setPointsValue(event.target.value)}
+              disabled={isSaving}
+            />
+            <button
+              type="submit"
+              title={t("common:save")}
+              aria-label={t("common:save")}
+              disabled={isSaving || !canSavePoints}
+              className="text-muted-foreground hover:bg-muted rounded p-1 disabled:opacity-40"
+            >
+              <Save className="size-4" />
+            </button>
+            <button
+              type="button"
+              title={t("common:cancel")}
+              aria-label={t("common:cancel")}
+              disabled={isSaving}
+              onClick={() => {
+                setPointsValue(String(points ?? 0))
+                setIsEditingPoints(false)
+              }}
+              className="text-muted-foreground hover:bg-muted rounded p-1 disabled:opacity-40"
+            >
+              <X className="size-4" />
+            </button>
+          </form>
+        ) : (
+          <span className="inline-flex items-center justify-end gap-1">
+            {awardedPoints}
+            {canEditPoints && (
+              <button
+                type="button"
+                title={t("manager:result.table.editPoints")}
+                aria-label={t("manager:result.table.editPoints")}
+                onClick={() => {
+                  setPointsValue(String(points ?? 0))
+                  setIsEditingPoints(true)
+                }}
+                className="text-muted-foreground hover:bg-muted rounded p-1"
+              >
+                <Pencil className="size-3.5" />
+              </button>
+            )}
+          </span>
+        )}
       </td>
     </tr>
   )
 }
 
 const ResultModalTable = () => {
-  const { result, questionResult } = useResultModal()
+  const { result, questionResult, questionIndex } = useResultModal()
+  const queryClient = useQueryClient()
   const { t } = useTranslation()
+  const { mutate: savePoints, isPending } = useMutation({
+    mutationFn: updateResultPoints,
+    onSuccess: (updatedResult) => {
+      queryClient.setQueryData(
+        resultKeys.detail(updatedResult.id),
+        updatedResult,
+      )
+    },
+    onError: (error) => {
+      toast.error(
+        t(error instanceof ApiError ? error.key : "errors:route.description"),
+      )
+    },
+  })
 
   return (
     <table className="w-full text-sm">
@@ -106,7 +220,24 @@ const ResultModalTable = () => {
       </thead>
       <tbody className="divide-muted divide-y-2">
         {questionResult.playerAnswers.map((playerAnswer, i) => (
-          <ResultModalTableRow key={i} playerAnswer={playerAnswer} />
+          <ResultModalTableRow
+            key={i}
+            playerAnswer={playerAnswer}
+            answerIndex={i}
+            canEditPoints={result.gameMode !== QUIZZ_MODES.SURVEY}
+            isSaving={isPending}
+            onSavePoints={(answerIndex, points, onSuccess) =>
+              savePoints(
+                {
+                  id: result.id,
+                  questionIndex,
+                  playerAnswerIndex: answerIndex,
+                  points,
+                },
+                { onSuccess },
+              )
+            }
+          />
         ))}
       </tbody>
     </table>

@@ -42,7 +42,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -115,7 +115,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -188,7 +188,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -269,7 +269,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -363,10 +363,14 @@
         {
           "text": "joanne",
           "points": 10
+        },
+        {
+          "text": "kayli",
+          "points": 0
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -547,7 +551,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -612,7 +616,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -701,15 +705,15 @@
         },
         {
           "text": "julian",
-          "points": 85
+          "points": 100
         },
         {
           "text": "elsa",
-          "points": 80
+          "points": 85
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -1050,7 +1054,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -1123,7 +1127,7 @@
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     },
     {
       "type": "text",
@@ -1169,10 +1173,14 @@
         {
           "text": "massachusetts",
           "points": 60
+        },
+        {
+          "text": "hawaii",
+          "points": 30
         }
       ],
       "cooldown": 5,
-      "time": 20
+      "time": 30
     }
   ]
 }

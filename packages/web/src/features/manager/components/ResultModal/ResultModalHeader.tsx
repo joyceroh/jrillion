@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
 const ResultModalHeader = () => {
-  const { result, questionIndex, total, goNext, goPrev, onClose } =
+  const { result, slideIndex, totalSlides, goNext, goPrev, onClose } =
     useResultModal()
   const { t } = useTranslation()
 
@@ -14,12 +14,12 @@ const ResultModalHeader = () => {
       </h2>
       <div className="flex shrink-0 items-center gap-1">
         <span className="text-muted-foreground text-sm">
-          {questionIndex + 1}
+          {slideIndex + 1}
           {t("manager:result.paginationOf")}
-          {total}
+          {totalSlides}
         </span>
         <button
-          disabled={questionIndex === 0}
+          disabled={slideIndex === 0}
           onClick={goPrev}
           title={t("common:previous")}
           className="text-muted-foreground hover:bg-muted rounded p-1 disabled:opacity-30"
@@ -27,7 +27,7 @@ const ResultModalHeader = () => {
           <ChevronLeft className="size-5" />
         </button>
         <button
-          disabled={questionIndex === total - 1}
+          disabled={slideIndex === totalSlides - 1}
           onClick={goNext}
           title={t("common:next")}
           className="text-muted-foreground hover:bg-muted rounded p-1 disabled:opacity-30"

@@ -520,9 +520,7 @@ export class RoundManager {
         return null
       }
 
-      const answer = answerIds.trim()
-
-      return answer || null
+      return answerIds.trim() ? answerIds : null
     }
 
     if (!Array.isArray(answerIds)) {

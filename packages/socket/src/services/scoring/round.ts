@@ -7,6 +7,14 @@ export type ScoredPlayer = Player & {
   lastPoints: number
 }
 
+const normalizeTextAnswer = (value: string): string =>
+  value
+    .trim()
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim()
+
 export const countAnswers = (answers: Answer[]): Record<number, number> => {
   const answerIds = answers.flatMap((answer) =>
     Array.isArray(answer.answerIds) ? answer.answerIds : [],
@@ -31,18 +39,18 @@ export const scoreQuestion = (
       typeof playerAnswer?.answerIds === "string"
         ? playerAnswer.answerIds
         : undefined
+    const normalizedSubmittedText =
+      submittedText === undefined ? undefined : normalizeTextAnswer(submittedText)
     const matchedTextAnswer =
-      question.type === QUESTION_TYPES.TEXT && submittedText !== undefined
-        ? question.textAnswers?.find(
-            ({ text }) => {
-              const normalizedAnswer = text.trim().toLowerCase()
+      question.type === QUESTION_TYPES.TEXT && normalizedSubmittedText !== undefined
+        ? question.textAnswers?.find(({ text }) => {
+            const normalizedAnswer = normalizeTextAnswer(text)
 
-              return (
-                normalizedAnswer.length > 0 &&
-                submittedText.trim().toLowerCase().includes(normalizedAnswer)
-              )
-            },
-          )
+            return (
+              normalizedAnswer.length > 0 &&
+              normalizedSubmittedText.includes(normalizedAnswer)
+            )
+          })
         : undefined
 
     const scoreMultiplier = (() => {

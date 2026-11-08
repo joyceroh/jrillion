@@ -1,5 +1,6 @@
 import type { GameSettings } from "@razzia/common/types/game"
 import type { QuizzValidated } from "@razzia/common/validators/quizz"
+import type { UpdateResultPoints } from "@razzia/common/validators/results"
 import { api, unwrap, unwrapEmpty } from "@razzia/web/lib/api"
 import { queryOptions } from "@tanstack/react-query"
 
@@ -53,6 +54,12 @@ export const deleteQuizz = (id: string) =>
 
 export const deleteResult = (id: string) =>
   unwrapEmpty(api.results[":id"].$delete({ param: { id } }))
+
+export const updateResultPoints = ({
+  id,
+  ...json
+}: UpdateResultPoints & { id: string }) =>
+  unwrap(api.results[":id"].points.$patch({ param: { id }, json }))
 
 export const createGame = (quizzId: string) =>
   unwrap(api.games.$post({ json: { quizzId } }))

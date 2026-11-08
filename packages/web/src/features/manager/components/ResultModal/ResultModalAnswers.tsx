@@ -70,8 +70,8 @@ const ResultModalAnswers = () => {
   const { options } = questionResult
   const scoringMode = isMultiOptions(options) ? options.scoringMode : undefined
 
-  const values = questionResult.playerAnswers.flatMap(
-    (pa) => (Array.isArray(pa.answerIds) ? pa.answerIds : []),
+  const values = questionResult.playerAnswers.flatMap((pa) =>
+    Array.isArray(pa.answerIds) ? pa.answerIds : [],
   )
   const average = (() => {
     if (values.length === 0) {
@@ -145,8 +145,8 @@ const ResultModalAnswers = () => {
 
     return questionResult.answers.map((label, ai) => ({
       label,
-      count: questionResult.playerAnswers.filter((pa) =>
-        Array.isArray(pa.answerIds) && pa.answerIds.includes(ai),
+      count: questionResult.playerAnswers.filter(
+        (pa) => Array.isArray(pa.answerIds) && pa.answerIds.includes(ai),
       ).length,
       isCorrect: questionResult.solutions?.includes(ai) ?? false,
       color: ANSWERS_COLORS[ai % 4],
@@ -165,8 +165,11 @@ const ResultModalAnswers = () => {
     },
   ]
 
+  return <div></div>
+
+  // I don't think this is needed
   return (
-    <div className="border-accent flex flex-col border-b-2 md:flex-row">
+    <div className="border-accent ques flex flex-col border-b-2 md:flex-row">
       <div className="border-accent bg-muted/30 flex shrink-0 flex-row items-center gap-4 border-b-2 p-4 md:w-66 md:flex-col md:justify-center md:border-r-2 md:border-b-0">
         <MediaPreview media={questionResult.media} />
         <div className="text-muted-foreground flex items-center gap-2 text-xs">
@@ -193,7 +196,7 @@ const ResultModalAnswers = () => {
           average !== null && (
             <p className="text-muted-foreground mb-1 text-xs">
               {t("manager:result.estimation.average", {
-                value: formatValue(Math.round(average * 100) / 100),
+                value: formatValue(Math.round((average || 0) * 100) / 100),
               })}
             </p>
           )}
@@ -233,19 +236,19 @@ const ResultModalAnswers = () => {
 
               {result.gameMode !== QUIZZ_MODES.SURVEY &&
                 questionResult.type !== QUESTION_TYPES.TEXT && (
-                <div className="shrink-0">
-                  {row.isCorrect ? (
-                    <Check className="text-correct size-5 stroke-4" />
-                  ) : (
-                    <X
-                      className={clsx(
-                        "size-5 stroke-4",
-                        row.color ? "text-red-500" : "text-red-400",
-                      )}
-                    />
-                  )}
-                </div>
-              )}
+                  <div className="shrink-0">
+                    {row.isCorrect ? (
+                      <Check className="text-correct size-5 stroke-4" />
+                    ) : (
+                      <X
+                        className={clsx(
+                          "size-5 stroke-4",
+                          row.color ? "text-red-500" : "text-red-400",
+                        )}
+                      />
+                    )}
+                  </div>
+                )}
 
               <span className="text-accent-foreground text-center text-sm font-semibold">
                 {row.count}

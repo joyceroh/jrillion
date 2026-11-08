@@ -1,17 +1,14 @@
 import type { GameResult, QuestionResult } from "@razzia/common/types/game"
 import { isAnswerCorrect } from "@razzia/web/features/questions/utils"
-import {
-  createContext,
-  useContext,
-  useState,
-  type PropsWithChildren,
-} from "react"
+import { createContext, useContext, type PropsWithChildren } from "react"
 
 interface ResultModalContextType {
   result: GameResult
   questionResult: QuestionResult
+  slideIndex: number
   questionIndex: number
-  total: number
+  totalSlides: number
+  isFinalScoresSlide: boolean
   totalPlayers: number
   answeredCount: number
   correctCount: number
@@ -28,13 +25,23 @@ const ResultModalContext = createContext<ResultModalContextType | null>(null)
 type Props = PropsWithChildren<{
   result: GameResult
   onClose: () => void
+  slideIndex: number
+  goNext: () => void
+  goPrev: () => void
 }>
 
-export const ResultModalProvider = ({ children, result, onClose }: Props) => {
-  const [questionIndex, setQuestionIndex] = useState(0)
-
+export const ResultModalProvider = ({
+  children,
+  result,
+  onClose,
+  slideIndex,
+  goNext,
+  goPrev,
+}: Props) => {
+  const totalSlides = result.questions.length + 1
+  const isFinalScoresSlide = slideIndex === 0
+  const questionIndex = Math.max(0, slideIndex - 1)
   const questionResult = result.questions[questionIndex]
-  const total = result.questions.length
   const totalPlayers = result.players.length
 
   const answeredCount = questionResult.playerAnswers.filter(
@@ -53,27 +60,23 @@ export const ResultModalProvider = ({ children, result, onClose }: Props) => {
     ...questionResult.answers.map(
       (_, ai) =>
         questionResult.playerAnswers.filter(
-          (pa) =>
-            Array.isArray(pa.answerIds) && pa.answerIds.includes(ai),
-        )
-          .length,
+          (pa) => Array.isArray(pa.answerIds) && pa.answerIds.includes(ai),
+        ).length,
     ),
   )
 
   const getPlayerPoints = (name: string) =>
     result.players.find((p) => p.username === name)?.points ?? 0
 
-  const goNext = () => setQuestionIndex((i) => Math.min(i + 1, total - 1))
-
-  const goPrev = () => setQuestionIndex((i) => Math.max(i - 1, 0))
-
   return (
     <ResultModalContext.Provider
       value={{
         result,
         questionResult,
+        slideIndex,
         questionIndex,
-        total,
+        totalSlides,
+        isFinalScoresSlide,
         totalPlayers,
         answeredCount,
         correctCount,
