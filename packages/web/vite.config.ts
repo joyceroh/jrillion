@@ -139,7 +139,10 @@ export default defineConfig(({ command }) => ({
     },
   },
   server: serverOptions,
-  preview: serverOptions,
+  preview: {
+    ...serverOptions,
+    allowedHosts: [".trycloudflare.com"],
+  },
   build: {
     chunkSizeWarningLimit: 2000,
   },
